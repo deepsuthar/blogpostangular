@@ -1,0 +1,20 @@
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div *ngIf="deleted" class="alert alert-success box-msg" role="alert">
+                        <strong>Deleted Successfully!</strong>
+                </div></div>
+                <div class="col-md-8 offset-2"  style="margin-top:40px;">
+                  <div class="card" > 
+                    <div class="card-body">
+                      <h5 class="card-title">{{ post.blog_title }}</h5>
+                      <p class="card-text">{{ post.blog_text }}</p>
+                      <p class="card-text float-right">{{ post.blog_author }}</p>
+                      <a [routerLink]="['/post/edit', post._id]" class="btn btn-primary">Edit</a>
+                      <a (click) = "deletePost(post._id)" class="btn btn-danger">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>

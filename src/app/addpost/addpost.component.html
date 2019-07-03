@@ -1,0 +1,60 @@
+<div class="container">
+
+  <form style="padding-top:40px;" [formGroup]="angForm" novalidate>
+    <div class="row">
+        <div class="col-sm-4 offset-sm-4">
+    <div *ngIf="edited" class="alert alert-success box-msg" role="alert">
+            <strong>List Saved!</strong> Your changes has been saved.
+    </div></div>
+
+      <div class="col-sm-4 offset-sm-4">
+        <div class="form-group">
+          <label class="">Blog Title</label>
+          <input type="text" class="form-control"  formControlName="blog_title" #blog_title/>
+        </div>
+        <div *ngIf="angForm.controls['blog_title'].invalid && (angForm.controls['blog_title'].dirty || angForm.controls['blog_title'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['blog_title'].errors.required">
+                Blog Title is required.
+                </div>
+              </div>
+      </div>
+      <div class="col-sm-4 offset-sm-4">
+        <div class="form-group">
+          <label>Blog Text </label>
+          <textarea class="form-control" formControlName="blog_text" #blog_text></textarea>
+        </div>
+        <div *ngIf="angForm.controls['blog_text'].invalid && (angForm.controls['blog_text'].dirty || angForm.controls['blog_text'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['blog_text'].errors.required">
+                Blog Text is required.
+                </div>
+              </div>
+      </div>
+      <div class="col-sm-4 offset-sm-4">
+            <div class="form-group">
+                    <label class="">Author Name</label>
+                    <input type="text" class="form-control"  formControlName="blog_author" #blog_author/>
+                  </div>
+                  <div *ngIf="angForm.controls['blog_author'].invalid && (angForm.controls['blog_author'].dirty || angForm.controls['blog_author'].touched)" class="alert alert-danger">
+                          <div *ngIf="angForm.controls['blog_author'].errors.required">
+                    blog_author is required.
+                          </div>
+                        </div>
+      </div>
+      <div class="col-sm-4 offset-sm-4">
+        <div class="form-group">
+                <button type="submit" (click)="addPost(blog_title.value, blog_text.value, blog_author.value)"  
+                [disabled]="angForm.pristine || angForm.invalid" 
+                class="btn btn-primary">Add Post</button>
+
+               
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </form>
+
+</div>
